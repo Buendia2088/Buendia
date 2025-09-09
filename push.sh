@@ -33,4 +33,4 @@ git commit -m "$COMMIT_MSG"
 git branch -M main
 
 # 推送到远程
-git push -u origin main
+git push -u origin main --force
