@@ -1,0 +1,74 @@
+@table
+(outer: NULL width: 52 argc: 0 arglist: NIL rtype: INT level: 0
+code: [
+    t14 = 1;
+    x = t14;
+    PAR a;
+    PAR x;
+    PAR foo;
+    t15 = CALL g, 3;
+]
+entry: (name: x type: INT offset: 4)
+entry: (name: a type: ARRAY base: 28 dims: 2 dim[0]: 2 dim[1]: 3 etype: INT)
+entry: (name: foo type: FUNC offset: 36 mytab: foo@table)
+entry: (name: g type: type: FUNC offset: 44 mytab: g@table)
+entry: (name: t14 type: TEMP offset: 48)
+entry: (name: t15 type: TEMP offset: 52))
+
+foo@table
+(outer: @table width: 32 argc: 1 arglist: (x) rtype: INT level: 1
+code: [
+    t1 = 0;
+    t2 = 2;
+    t3 = t1 * 3;
+    t4 = t3 + t2;
+    t5 = t4 * 4;
+    t6 = a[t5];
+    t7 = x + t6;
+    x = t7
+    RETURN x
+]
+entry: (name: x type: INT offset: 4)
+entry: (name: t1 type: TEMP offset: 8)
+entry: (name: t2 type: TEMP offset: 12)
+entry: (name: t3 type: TEMP offset: 16)
+entry: (name: t4 type: TEMP offset: 20)
+entry: (name: t5 type: TEMP offset: 24)
+entry: (name: t6 type: TEMP offset: 28)
+entry: (name: t7 type: TEMP offset: 32))
+
+g@table
+(outer: @table width: 40 argc: 3 arglist: (r, y, b) rtype: INT level: 1
+code: [
+    IF y <= x THEN l1 ELSE l2;
+    LABEL l1;
+    t8 = 3;
+    t9 = t8 * 4;
+    t10 = b[t9];
+    IF t10 != 0 THEN l3 ELSE l4;
+    LABEL l3
+    PAR x
+    t11 = CALL r, 1;
+    PAR b;
+    PAR t11;
+    PAR r;
+    t12 = CALL g, 3;
+    y = t12;
+    GOTO l5;
+    LABEL l2;
+    LABEL l4;
+    PAR y;
+    t13 = CALL r, 1;
+    y = t13;
+    LABEL l5;
+    RETURN y
+]
+entry: (name: r type: FUNPTT offset: 8 rtype: INT)
+entry: (name: y type: INT offset: 12)
+entry: (name: b type ARRPTT offset: 16 etype: INT)
+entry: (name: t8 type: TEMP offset: 20)
+entry: (name: t9 type: TEMP offset: 24)
+entry: (name: t10 type: TEMP offset: 28)
+entry: (name: t11 type: TEMP offset: 32)
+entry: (name: t12 type: TEMP offset: 36)
+entry: (name: t13 type: TEMP offset: 40))

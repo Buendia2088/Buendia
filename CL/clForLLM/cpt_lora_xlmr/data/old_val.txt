@@ -1,0 +1,5 @@
+Natural language processing allows machines to understand text.
+Deep learning uses neural networks with many layers.
+The Earth revolves around the Sun once every year.
+Python is a popular programming language.
+Data science combines statistics with computer science.

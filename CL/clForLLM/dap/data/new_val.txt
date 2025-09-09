@@ -1,0 +1,5 @@
+El procesamiento de lenguaje natural permite a las máquinas entender texto.
+El aprendizaje profundo utiliza redes neuronales con muchas capas.
+La Tierra gira alrededor del Sol una vez al año.
+Python es un lenguaje de programación popular.
+La ciencia de datos combina estadísticas con informática.

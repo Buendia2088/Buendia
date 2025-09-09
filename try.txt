@@ -1,0 +1,29 @@
+LABEL l8;
+
+// code 6 begins
+t1 = 1; 
+IF t1 < x THEN l1 ELSE l2; // code 1
+LABEL l1;
+t2 = 1；
+IF y > t2 THEN l3 ELSE l4; // code 2
+// code 6 ends
+
+LABEL l3;
+
+//code 7 begins
+t3 = 2; //code 3
+t4 = -n + t3; //code 3
+t5 = x * y; //code 3
+IF t4 < t5 THEN l5 ELSE l6; //code 3
+LABEL l5;
+t6 = 100; // code 4
+a = t6; // code 4
+GOTO l7;
+LABEL l6;
+b = a; // code 5
+LABEL l7;
+//code 7 ends
+
+GOTO l8;
+LABEL l2;
+LABEL l4;

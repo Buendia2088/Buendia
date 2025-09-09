@@ -1,0 +1,6 @@
+\contentsline {section}{\numberline {1}摘要}{2}{section.1}%
+\contentsline {section}{\numberline {2}申请动机}{2}{section.2}%
+\contentsline {section}{\numberline {3}AI 能力与技术栈}{2}{section.3}%
+\contentsline {section}{\numberline {4}近期项目 / 科研经历}{3}{section.4}%
+\contentsline {section}{\numberline {5}课程成绩}{5}{section.5}%
+\contentsline {section}{\numberline {6}所获荣誉}{5}{section.6}%

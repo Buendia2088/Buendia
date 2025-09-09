@@ -1,0 +1,140 @@
+{
+  "before": {
+    "old_val": {
+      "loss": 1.1628875732421875,
+      "ppl_approx": 3.199157753856675
+    },
+    "new_val": {
+      "loss": 4.502756118774414,
+      "ppl_approx": 90.2655714140822
+    }
+  },
+  "no_rewarm": {
+    "config": {
+      "model_name": "xlm-roberta-base",
+      "old_train": "data\\old_train.txt",
+      "old_val": "data\\old_val.txt",
+      "new_train": "data\\new_train.txt",
+      "new_val": "data\\new_val.txt",
+      "output_dir": "runs\\cpt_demo_norewarm",
+      "epochs": 3,
+      "batch_size": 8,
+      "grad_accum_steps": 1,
+      "seq_len": 64,
+      "mask_prob": 0.15,
+      "lr": 0.0002,
+      "rewarm_lr": false,
+      "warmup_ratio": 0.0,
+      "weight_decay": 0.01,
+      "fp16": true,
+      "bf16": false,
+      "seed": 42,
+      "lora_r": 8,
+      "lora_alpha": 16,
+      "lora_dropout": 0.1,
+      "lora_targets": "query,value",
+      "no_lora": false,
+      "full_finetune": false,
+      "unfreeze_ln": false,
+      "unfreeze_bias": false,
+      "unfreeze_lm_head": false,
+      "old_replay_ratio": 0.1,
+      "gradient_checkpointing": true,
+      "gc_use_reentrant": false,
+      "compare_rewarm": true,
+      "use_bf16": false,
+      "use_rewarm": false,
+      "lr_scheduler_type": "linear"
+    },
+    "before": {
+      "old_val": {
+        "loss": 1.1628875732421875,
+        "ppl_approx": 3.199157753856675
+      },
+      "new_val": {
+        "loss": 4.502756118774414,
+        "ppl_approx": 90.2655714140822
+      }
+    },
+    "after": {
+      "old_val": {
+        "loss": 1.3223401308059692,
+        "ppl_approx": 3.7521917308304387
+      },
+      "new_val": {
+        "loss": 1.3106913566589355,
+        "ppl_approx": 3.7087368860168524
+      }
+    },
+    "deltas": {
+      "old_val_loss_diff": 0.15945255756378174,
+      "new_val_loss_diff": -3.1920647621154785
+    }
+  },
+  "rewarm": {
+    "config": {
+      "model_name": "xlm-roberta-base",
+      "old_train": "data\\old_train.txt",
+      "old_val": "data\\old_val.txt",
+      "new_train": "data\\new_train.txt",
+      "new_val": "data\\new_val.txt",
+      "output_dir": "runs\\cpt_demo_rewarm",
+      "epochs": 3,
+      "batch_size": 8,
+      "grad_accum_steps": 1,
+      "seq_len": 64,
+      "mask_prob": 0.15,
+      "lr": 0.0002,
+      "rewarm_lr": false,
+      "warmup_ratio": 0.06,
+      "weight_decay": 0.01,
+      "fp16": true,
+      "bf16": false,
+      "seed": 42,
+      "lora_r": 8,
+      "lora_alpha": 16,
+      "lora_dropout": 0.1,
+      "lora_targets": "query,value",
+      "no_lora": false,
+      "full_finetune": false,
+      "unfreeze_ln": false,
+      "unfreeze_bias": false,
+      "unfreeze_lm_head": false,
+      "old_replay_ratio": 0.1,
+      "gradient_checkpointing": true,
+      "gc_use_reentrant": false,
+      "compare_rewarm": true,
+      "use_bf16": false,
+      "use_rewarm": true,
+      "lr_scheduler_type": "cosine"
+    },
+    "before": {
+      "old_val": {
+        "loss": 1.1628875732421875,
+        "ppl_approx": 3.199157753856675
+      },
+      "new_val": {
+        "loss": 4.502756118774414,
+        "ppl_approx": 90.2655714140822
+      }
+    },
+    "after": {
+      "old_val": {
+        "loss": 1.2685085535049438,
+        "ppl_approx": 3.555545699716546
+      },
+      "new_val": {
+        "loss": 1.295540690422058,
+        "ppl_approx": 3.652970566468937
+      }
+    },
+    "deltas": {
+      "old_val_loss_diff": 0.10562098026275635,
+      "new_val_loss_diff": -3.207215428352356
+    }
+  },
+  "improvements": {
+    "old_val_delta_better": 0.05383157730102539,
+    "new_val_delta_better": -0.015150666236877441
+  }
+}

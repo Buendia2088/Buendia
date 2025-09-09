@@ -1,0 +1,62 @@
+@table
+(outer: NULL, width: 28, argc: 0, arglist: NIL, rtype: INT, level: 0
+code: [
+    t8 = 6;
+    PAR t8;
+    t9 = CALL foo, 1
+]
+entry: (name: raw, type: FUNC, offset: 8, mytab: raw@table)
+entry: (name: foo, type: FUNC, offset: 16, mytab: foo@table)
+entry: (name: y, type: INT, offset: 20)
+entry: (name: t8, type: TEMP, offset: 24)
+entry: (name: t9, type: TEMP, offset: 28))
+
+raw@table:
+(outer: @table, width: 8, argc: 1, arglist: (x), rtype: INT, level: 1
+code: [
+    t1 = 5;
+    y = x + t1;
+    RETURN y
+]
+entry: (name: x, type: INT, offset: 4)
+entry: (name: t1, type: TEMP, offset: 8))
+
+foo@table:
+(outer: @table, width: 20, argc: 1, arglist: (y), rtype: VOID, level: 1
+code: [
+    PAR raw;
+    PAR y;
+    t7 = CALL bar, 2;
+]
+entry: (name: y, type: INT, offset: 4)
+entry: (name: z, type: INT, offset: 8)
+entry: (name: bar, type: FUNC, offset: 16, mytab: bar@table)
+entry: (name: t7, type: TEMP, offset: 20))
+
+bar@table:
+(outer: foo@table, width: 32, argc: 2, arglist: (x, soo), rtype: VOID level: 2
+code: [
+    t2 = 3;
+    IF x > t2 l1 ELSE l2;
+    LABEL l1;
+    t3 = 3;
+    t4 = x / t3;
+    PAR soo;
+    PAR t4;
+    t5 = CALL bar, 2
+    GOTO l3;
+    LABEL l2;
+    PAR x;
+    t6 = CALL soo, 1;
+    z = t6;
+    LABEL l3;
+    PAR z;
+    CALL PRINT, 1;
+]
+entry: (name: x, type: INT, offset: 4)
+entry: (name: soo, type: FUNPTT, offset: 12, rtype: INT)
+entry: (name: t2, type: TEMP, offset: 16)
+entry: (name: t3, type: TEMP, offset: 20)
+entry: (name: t4, type: TEMP, offset: 24)
+entry: (name: t5, type: TEMP, offset: 28)
+entry: (name: t6, type: TEMP, offset: 32))

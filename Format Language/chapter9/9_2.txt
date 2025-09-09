@@ -1,0 +1,16 @@
+@table
+(outer: NULL width: 8 argc: 0 arglist: NIL rtype: VOID level: 0
+code: []
+entry: (neme: h type: FUNC offset: 8 mytab: h@table))
+
+h@table
+(outer: @table width: 20 argc: 2 arglist: (f, y) rtype: INT level: 1
+code: []
+entry: (neme: f type: FUNPTT offset: 8 rtype: INT)
+entry: (name: y type: INT offset: 12)
+entry: (name: g type: FUNC offset: 20 mytab: g@table))
+
+g@table
+(outer: h@table width: 8 argc: 1 arglist: (c) rtype: INT level: 2
+code:[]
+entry: (neme: c type: ARRPTT offset: 4 etype: INT))

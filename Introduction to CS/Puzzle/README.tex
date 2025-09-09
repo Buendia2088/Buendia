@@ -1,0 +1,45 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{diagbox}
+\usepackage{amsmath}
+\usepackage{lmodern}
+
+
+\geometry{left=1.0in,right=1.0in,top=0.3in,bottom=0.3in}
+
+\pagestyle{fancy}
+\fancyhf{} 
+\ctexset{
+    section={
+        format=\raggedright
+    }
+}
+
+\begin{document}
+
+\title{\vspace{0cm}代码说明}
+\author{程远2234412848}
+\date{}
+\maketitle
+
+\section{solve.py}
+此为解密老师提供照片的程序。
+
+遍历每个像素，每八个像素的r通道末尾组成一个二进制数，
+采用ASCII码编码为字符，输出即可。
+
+\section{encode.py}
+此为自定义密文加密程序。
+
+遍历被加密信息，将其通过Unicode编码为8位二进制数，
+再遍历原图片像素，替换r通道最后一位即可。
+
+\section{decode.py}
+此为自定义密文解密程序。
+
+遍历加密图片r通道最后一位，通过ASCII码解码为字符，
+连接输出即可。
+
+\end{document}

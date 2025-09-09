@@ -1,0 +1,101 @@
+    .syntax unified
+    .cpu cortex-a9
+    .fpu vfpv3-d16
+    .text
+    .global bar
+    .global foo
+    .global main
+
+bar:
+    push    {lr}
+    vmov    s0, r0 
+    vcvt.f32.s32  s0, s0
+    vldr    s1,  =pi
+    vmul.f32 s0, s0, s1
+    pop     {pc}
+
+foo:
+    push    {r4-r6, lr}
+
+    cmp     r0, #0
+    bne     1f
+
+/* if (x==0) z = boo(arr[1]); */
+    ldr     r3, [r2, #4]
+    mov     r0, r3
+    mov     r3, r1
+    blx     r3
+    vstr    s0,  =z
+    pop     {r4-r6, pc}
+
+/* else return boo(arr[6*x]); */
+1:  mov     r3, #6
+    mul     r3, r3, r0
+    lsl     r3, r3, #2
+    ldr     r0, [r2, r3]
+    mov     r3, r1
+    blx     r3
+    pop     {r4-r6, pc}
+
+    .extern printf
+fmt:
+    .asciz  "%f\n"
+
+main:
+    push    {r4-r8, lr}
+
+    /* initialize a[i][j] = i + j */
+    ldr     r4, =a
+    mov     r5, #0
+outer_i:
+    cmp     r5, #10
+    beq     init_done
+    mov     r6, #0
+inner_j:
+    cmp     r6, #20
+    beq     next_i
+    add     r7, r5, r6
+
+    /* (i*20 + j) * 4 */
+    mov     r8, r5
+    mul     r8, r8, #20
+    add     r8, r8, r6
+    lsl     r8, r8, #2
+    str     r7, [r4, r8]
+
+    add     r6, r6, #1
+    b       inner_j
+next_i:
+    add     r5, r5, #1
+    b       outer_i
+init_done:
+
+    /* call foo(2, bar, a) */
+    mov     r0, #2
+    ldr     r1, =bar
+    ldr     r2, =a
+    bl      foo
+
+    /* printf("%f\n", <ret>) */
+    vcvt.f64.f32  d0, s0
+    ldr     r0, =fmt
+    bl      printf
+
+    mov     r0, #0
+    pop     {r4-r8, pc}
+
+/* data segment */
+    .data
+    .align  2
+    .global x
+x:  .word   0
+
+    .global z
+z:  .float  0.0
+
+    .align  2
+    .global a
+a:  .space  10*20*4
+
+    .section .rodata
+pi: .float  3.14

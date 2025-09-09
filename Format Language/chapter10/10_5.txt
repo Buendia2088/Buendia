@@ -1,0 +1,60 @@
+@table 
+(outer: NULL width: 856 argc: 0 arglist: NIL rtype: INT level: 0
+code: []
+entry: (name: x type: INT offset: 4)
+entry: (name: z type: FLO offset: 12)
+entry: (name: a type: ARRAY base: 816 etype: INT dims: 2 dim[0]: 10 dim[1]: 20)
+entry: (name: b type: ARRAY base: 840 etype: INT dims: 1 dim[0]: 6)
+entry: (name: bar type: FUNC offset: 848 mytab: bar@table)
+entry: (name: foo type: FUNC offset: 856 mytab: foo@table))
+
+bar@table:
+(outer: @table width: 40 argc: 1 arglist: (brr) rtype: FLO level: 1
+code: [
+    t1 = 0;
+    t2 = 5;
+    x = brr[t1] + brr[t2];
+    RETURN x
+]
+entry: (name: brr type: ARRAY base: 24 etype: INT dims: 1 dim[0]: 6)
+entry: (name: x type: FLO offset: 32)
+entry: (name: t1 type: TEMP offset: 36)
+entry: (name: t2 type: TEMP offset: 40))
+
+foo@table: 
+(outer: @table width: 60 argc: 3 arglist: (x boo arr) rtype: FLO level: 1
+code: [
+    t3 = 0;
+    IF x == t3 l1 ELSE l2;
+    LABEL l1;
+    t4 = 0;
+    t5 = arr[t4];
+    PAR t5;
+    t6 = CALL boo, 1;
+    PAR t6;
+    t7 = CALL sqrt, 1;
+    z = t7;
+    GOTO l3;
+    LABEL l2;
+    t8 = x * dim[1];
+    t9 = t8 + x;
+    t10 = t9 * 4;
+    t11 = arr[t10];
+    PAR t11;
+    t12 = CALL boo, 1;
+    RETURN t12;
+    LEBEL l3
+]
+entry: (name: arr type: ARRPTT offset: 8 etype: INT)
+entry: (name: boo type: FUNPTT offset: 16 rtype: FLO)
+entry: (name: x type: INT offset: 20)
+entry: (name: t3 type: TEMP offset: 24)
+entry: (name: t4 type: TEMP offset: 28)
+entry: (name: t5 type: TEMP offset: 32)
+entry: (name: t6 type: TEMP offset: 36)
+entry: (name: t7 type: TEMP offset: 40)
+entry: (name: t8 type: TEMP offset: 44)
+entry: (name: t9 type: TEMP offset: 48)
+entry: (name: t10 type: TEMP offset: 52)
+entry: (name: t11 type: TEMP offset: 56)
+entry: (name: t12 type: TEMP offset: 60))

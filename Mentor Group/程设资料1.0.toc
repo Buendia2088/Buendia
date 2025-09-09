@@ -1,0 +1,119 @@
+\contentsline {section}{\numberline {1}前言}{5}{section.1}%
+\contentsline {section}{\numberline {2}GDB部分(如何减少与修复bug)}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}减少错误的好习惯}{6}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}写伪代码}{6}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}\textcolor {blue}{避免常见的错误}}{7}{subsubsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.2}GDB的基本使用}{8}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}用gdb执行程序的技巧}{8}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}\textcolor {blue}{用GDB查看信息的技巧}}{8}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}GDB断点的技巧}{8}{subsubsection.2.2.3}%
+\contentsline {section}{\numberline {3}输入输出 \& STL（标准模板库）\& 奇怪的技巧}{9}{section.3}%
+\contentsline {subsection}{\numberline {3.1}输入输出}{9}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}\textcolor {blue}{cin}}{9}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}\textcolor {blue}{cout}}{10}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}\textcolor {blue}{getline}}{11}{subsubsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.4}putchar/getchar}{12}{subsubsection.3.1.4}%
+\contentsline {subsubsection}{\numberline {3.1.5}scaf(可以便捷的实现混合类型、复杂格式、指定特殊格式的输入)}{12}{subsubsection.3.1.5}%
+\contentsline {subsubsection}{\numberline {3.1.6}printf（可以便捷的实现混合类型、复杂格式、指定特殊格式的输出）}{14}{subsubsection.3.1.6}%
+\contentsline {subsubsection}{\numberline {3.1.7}gets/puts}{15}{subsubsection.3.1.7}%
+\contentsline {subsubsection}{\numberline {3.1.8}freopen}{15}{subsubsection.3.1.8}%
+\contentsline {subsubsection}{\numberline {3.1.9}文件指针FILE*}{16}{subsubsection.3.1.9}%
+\contentsline {subsubsection}{\numberline {3.1.10}\textcolor {blue}{文件流fstream}}{16}{subsubsection.3.1.10}%
+\contentsline {subsection}{\numberline {3.2}STL，Standard Template Library，标准模板库}{17}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}迭代器}{17}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}\textcolor {blue}{sort}}{17}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}lower\textunderscore bound(begin,end,value,cmp())}{18}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}栈，头文件<stack>}{19}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}队列，头文件<queue>}{20}{subsubsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.6}链表，头文件<list>}{21}{subsubsection.3.2.6}%
+\contentsline {subsubsection}{\numberline {3.2.7}集合<set>,可重集合<multiset>}{21}{subsubsection.3.2.7}%
+\contentsline {subsubsection}{\numberline {3.2.8}映射<map>}{22}{subsubsection.3.2.8}%
+\contentsline {subsubsection}{\numberline {3.2.9}优先队列/堆priority\textunderscore queue,头文件<queue>}{23}{subsubsection.3.2.9}%
+\contentsline {subsubsection}{\numberline {3.2.10}\textcolor {blue}{vector动态数组(长度不限的数组,采用分块存储)}}{24}{subsubsection.3.2.10}%
+\contentsline {subsection}{\numberline {3.3}编程技巧}{24}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}位运算}{24}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}宏定义}{26}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}骗分技巧（慎用！！！）}{26}{subsubsection.3.3.3}%
+\contentsline {section}{\numberline {4}链表}{26}{section.4}%
+\contentsline {subsection}{\numberline {4.1}什么是链表}{26}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}\textcolor {blue}{链表的操作}}{27}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}链表的建立}{27}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}链表插入节点}{28}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}链表的查找}{29}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}链表删除节点}{30}{subsubsection.4.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.5}数据有序插入}{31}{subsubsection.4.2.5}%
+\contentsline {subsubsection}{\numberline {4.2.6}链表输出}{32}{subsubsection.4.2.6}%
+\contentsline {section}{\numberline {5}栈、队列和排序}{32}{section.5}%
+\contentsline {subsection}{\numberline {5.1}栈（Stack）}{32}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}栈的基本概念}{32}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}栈的基本操作}{33}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}\textcolor {blue}{栈的实现}}{33}{subsubsection.5.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.4}\textcolor {blue}{栈的应用}}{34}{subsubsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.2}队列（Queue）}{36}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}队列的基本概念}{36}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}队列的基本操作}{36}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}\textcolor {blue}{队列的实现}}{37}{subsubsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.4}\textcolor {blue}{队列的应用}}{38}{subsubsection.5.2.4}%
+\contentsline {subsection}{\numberline {5.3}排序（Sorting）}{40}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}排序的基本概念}{40}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}\textcolor {blue}{简单排序算法}}{40}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}“特殊”的排序}{42}{subsubsection.5.3.3}%
+\contentsline {section}{\numberline {6}面向对象的程序设计}{45}{section.6}%
+\contentsline {subsection}{\numberline {6.1}何为面向对象的编程}{45}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}面向对象与面向过程}{45}{subsubsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.2}\textcolor {blue}{基本概念}}{46}{subsubsection.6.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.3}基本特征：封装、继承、多态}{46}{subsubsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.2}面向对象编程的基本语法}{46}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}\textcolor {blue}{类 、数据成员与成员函数}}{46}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}\textcolor {blue}{对象}}{47}{subsubsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.3}\textcolor {blue}{构造函数}}{47}{subsubsection.6.2.3}%
+\contentsline {subsubsection}{\numberline {6.2.4}\textcolor {blue}{析构函数}}{49}{subsubsection.6.2.4}%
+\contentsline {subsubsection}{\numberline {6.2.5}\textcolor {blue}{访问修饰符}}{49}{subsubsection.6.2.5}%
+\contentsline {subsubsection}{\numberline {6.2.6}\textcolor {blue}{对象数组}}{49}{subsubsection.6.2.6}%
+\contentsline {subsubsection}{\numberline {6.2.7}\textcolor {blue}{this指针}}{50}{subsubsection.6.2.7}%
+\contentsline {subsubsection}{\numberline {6.2.8}关于引用}{51}{subsubsection.6.2.8}%
+\contentsline {subsubsection}{\numberline {6.2.9}拷贝构造函数与动态内存分配}{52}{subsubsection.6.2.9}%
+\contentsline {subsection}{\numberline {6.3}\textcolor {blue}{运算符重载}}{54}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}函数的cv限定}{60}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}类继承}{63}{subsection.6.5}%
+\contentsline {subsubsection}{\numberline {6.5.1}\textcolor {blue}{类继承基本语法（公有继承）}}{63}{subsubsection.6.5.1}%
+\contentsline {subsubsection}{\numberline {6.5.2}多次继承}{65}{subsubsection.6.5.2}%
+\contentsline {subsubsection}{\numberline {6.5.3}\textcolor {blue}{多态继承}}{65}{subsubsection.6.5.3}%
+\contentsline {paragraph}{静态类型和动态类型}{65}{paragraph*.11}%
+\contentsline {paragraph}{引入多态继承的目的}{66}{paragraph*.12}%
+\contentsline {paragraph}{引入多态}{67}{paragraph*.13}%
+\contentsline {subsubsection}{\numberline {6.5.4}\textcolor {blue}{细节}}{69}{subsubsection.6.5.4}%
+\contentsline {paragraph}{派生类中的虚函数}{69}{paragraph*.14}%
+\contentsline {paragraph}{析构函数}{69}{paragraph*.15}%
+\contentsline {paragraph}{最终覆盖函数}{69}{paragraph*.16}%
+\contentsline {paragraph}{返回类型要求}{70}{paragraph*.17}%
+\contentsline {paragraph}{有限定名字查找 vs 无限定名字查找}{70}{paragraph*.18}%
+\contentsline {paragraph}{不满足函数覆盖的情形}{71}{paragraph*.19}%
+\contentsline {paragraph}{构造函数}{71}{paragraph*.20}%
+\contentsline {paragraph}{友元}{72}{paragraph*.21}%
+\contentsline {subsubsection}{\numberline {6.5.5}\textcolor {blue}{静态联编和动态联编}}{72}{subsubsection.6.5.5}%
+\contentsline {paragraph}{指针和引用的向上转换和向下转换}{72}{paragraph*.22}%
+\contentsline {paragraph}{静态联编 动态联编}{73}{paragraph*.23}%
+\contentsline {paragraph}{虚函数表}{73}{paragraph*.24}%
+\contentsline {subsubsection}{\numberline {6.5.6}访问控制}{73}{subsubsection.6.5.6}%
+\contentsline {paragraph}{类的protected成员}{73}{paragraph*.25}%
+\contentsline {paragraph}{public继承 private继承 protected继承}{75}{paragraph*.26}%
+\contentsline {subsubsection}{\numberline {6.5.7}\textcolor {blue}{抽象基类}}{75}{subsubsection.6.5.7}%
+\contentsline {paragraph}{语法细节}{78}{paragraph*.27}%
+\contentsline {subsubsection}{\numberline {6.5.8}\textcolor {blue}{继承和动态内存分配}}{78}{subsubsection.6.5.8}%
+\contentsline {paragraph}{析构顺序}{78}{paragraph*.28}%
+\contentsline {paragraph}{派生类的析构}{78}{paragraph*.29}%
+\contentsline {paragraph}{派生类的复制构造}{78}{paragraph*.30}%
+\contentsline {paragraph}{派生类的赋值构造运算符}{79}{paragraph*.31}%
+\contentsline {subsection}{\numberline {6.6}认识模板}{80}{subsection.6.6}%
+\contentsline {subsubsection}{\numberline {6.6.1}什么是模板？}{80}{subsubsection.6.6.1}%
+\contentsline {subsubsection}{\numberline {6.6.2}\textcolor {blue}{声明模板}}{80}{subsubsection.6.6.2}%
+\contentsline {subsection}{\numberline {6.7}模板的实例化}{82}{subsection.6.7}%
+\contentsline {subsubsection}{\numberline {6.7.1}\textcolor {blue}{类模板的实例化}}{82}{subsubsection.6.7.1}%
+\contentsline {subsubsection}{\numberline {6.7.2}\textcolor {blue}{函数模板的实例化}}{83}{subsubsection.6.7.2}%
+\contentsline {subsubsection}{\numberline {6.7.3}非类型模板形参的限制}{83}{subsubsection.6.7.3}%
+\contentsline {subsubsection}{\numberline {6.7.4}实例化的时机}{84}{subsubsection.6.7.4}%
+\contentsline {subsubsection}{\numberline {6.7.5}实例化的一个常见错误}{87}{subsubsection.6.7.5}%
+\contentsline {subsection}{\numberline {6.8}\textcolor {blue}{模板的特化（具体化）}}{87}{subsection.6.8}%
+\contentsline {subsubsection}{\numberline {6.8.1}小技巧}{91}{subsubsection.6.8.1}%
+\contentsline {section}{\numberline {7}后记}{92}{section.7}%

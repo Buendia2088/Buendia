@@ -1,0 +1,2 @@
+exp nameCNN, model name: CNN, epochs: 50, device: cpu, batch size: 64, lr: 0.001, weight decay: 0.0001 random seed: 0
+Epoch [0/50], Step [0/625], Train Loss: 2.298011064529419

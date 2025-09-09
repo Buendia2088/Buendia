@@ -1,0 +1,50 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "method": "ia3",
+  "qlora": false,
+  "data_dir": "D:\\Buendia\\CL\\clForLLM\\peft\\data\\alpaca",
+  "alpaca_full_jsonl": "D:\\Buendia\\CL\\clForLLM\\peft\\data\\alpaca\\alpaca_full.jsonl",
+  "current_split_dir": "D:\\Buendia\\CL\\clForLLM\\peft\\data\\alpaca\\current_split",
+  "train_size": 1000,
+  "eval_size": 200,
+  "max_length": 512,
+  "learning_rate": 0.0002,
+  "optimizer": "adamw_torch",
+  "trainable_params": {
+    "trainable": 122880,
+    "total": 494155648,
+    "pct": 0.0249
+  },
+  "dataset_stats": {
+    "train_examples": 1000,
+    "eval_examples": 200,
+    "avg_train_tokens": 160.75,
+    "avg_eval_tokens": 139.42
+  },
+  "pre_eval": {
+    "eval_loss": 2.1850333213806152,
+    "perplexity": 8.890944806991497,
+    "eval_runtime_sec": 5.798
+  },
+  "post_eval": {
+    "eval_loss": 1.8744986057281494,
+    "perplexity": 6.517550438493058,
+    "eval_runtime_sec": 5.872
+  },
+  "train_wall_time_sec": 177.371,
+  "avg_step_time_sec": 0.8869,
+  "trainer_metrics": {
+    "train_runtime": 177.281,
+    "train_samples_per_second": 9.025,
+    "train_steps_per_second": 1.128,
+    "total_flos": 553131692010240.0,
+    "train_loss": 1.8277395629882813,
+    "epoch": 1.6
+  },
+  "artifacts": {
+    "adapter_dir": "D:\\Buendia\\CL\\clForLLM\\peft\\runs\\alpaca_ia3\\adapter",
+    "loss_log_csv": "D:\\Buendia\\CL\\clForLLM\\peft\\runs\\alpaca_ia3\\results\\loss_log.csv",
+    "trainer_state_json": null,
+    "trainer_config_json": null
+  }
+}

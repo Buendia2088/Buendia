@@ -1,0 +1,571 @@
+0: 
+Set Start:
+P' -> .P 
+P -> .D' S' 
+D' -> ._
+D' -> .D' D 
+Set End.
+1: 
+Set Start:
+P' -> P .
+Set End.
+2: 
+Set Start:
+P -> D' .S' 
+D' -> D' .D 
+S' -> .S 
+S' -> .S' ; S 
+D -> .T d 
+D -> .T d [ i ] 
+D -> .T d ( A' ) { D' S' } 
+S -> .d = E 
+S -> .if ( B ) S 
+S -> .if ( B ) S else S 
+S -> .while ( B ) S 
+S -> .return E 
+S -> .{ S' } 
+S -> .d ( R' ) 
+T -> .int void 
+Set End.
+3: 
+Set Start:
+P -> D' S' .
+S' -> S' .; S 
+Set End.
+4: 
+Set Start:
+S' -> S' ; .S 
+S -> .d = E 
+S -> .if ( B ) S 
+S -> .if ( B ) S else S 
+S -> .while ( B ) S 
+S -> .return E 
+S -> .{ S' } 
+S -> .d ( R' ) 
+Set End.
+5: 
+Set Start:
+S' -> S' ; S .
+Set End.
+6: 
+Set Start:
+S -> d .= E 
+S -> d .( R' ) 
+Set End.
+7: 
+Set Start:
+S -> d = .E 
+E -> .d = E 
+E -> .i 
+E -> .d 
+E -> .d ( R' ) 
+E -> .E + E 
+E -> .E * E 
+E -> .( E ) 
+Set End.
+8: 
+Set Start:
+S -> d = E .
+E -> E .+ E 
+E -> E .* E 
+Set End.
+9: 
+Set Start:
+E -> E + .E 
+E -> .d = E 
+E -> .i 
+E -> .d 
+E -> .d ( R' ) 
+E -> .E + E 
+E -> .E * E 
+E -> .( E ) 
+Set End.
+10: 
+Set Start:
+E -> E + E .
+E -> E .+ E 
+E -> E .* E 
+Set End.
+11: 
+Set Start:
+E -> E * .E 
+E -> .d = E 
+E -> .i 
+E -> .d 
+E -> .d ( R' ) 
+E -> .E + E 
+E -> .E * E 
+E -> .( E ) 
+Set End.
+12: 
+Set Start:
+E -> E * E .
+E -> E .+ E 
+E -> E .* E 
+Set End.
+13: 
+Set Start:
+E -> d .= E 
+E -> d .
+E -> d .( R' ) 
+Set End.
+14: 
+Set Start:
+E -> d = .E 
+E -> .d = E 
+E -> .i 
+E -> .d 
+E -> .d ( R' ) 
+E -> .E + E 
+E -> .E * E 
+E -> .( E ) 
+Set End.
+15: 
+Set Start:
+E -> d = E .
+E -> E .+ E 
+E -> E .* E 
+Set End.
+16: 
+Set Start:
+E -> i .
+Set End.
+17: 
+Set Start:
+E -> ( .E ) 
+E -> .d = E 
+E -> .i 
+E -> .d 
+E -> .d ( R' ) 
+E -> .E + E 
+E -> .E * E 
+E -> .( E ) 
+Set End.
+18: 
+Set Start:
+E -> ( E .) 
+E -> E .+ E 
+E -> E .* E 
+Set End.
+19: 
+Set Start:
+E -> ( E ) .
+Set End.
+20: 
+Set Start:
+E -> d ( .R' ) 
+R' -> ._
+R' -> .R' R 
+Set End.
+21: 
+Set Start:
+E -> d ( R' .) 
+R' -> R' .R 
+R -> .E 
+R -> .d [ ] 
+R -> .d ( ) 
+E -> .d = E 
+E -> .i 
+E -> .d 
+E -> .d ( R' ) 
+E -> .E + E 
+E -> .E * E 
+E -> .( E ) 
+Set End.
+22: 
+Set Start:
+E -> d ( R' ) .
+Set End.
+23: 
+Set Start:
+R' -> R' R .
+Set End.
+24: 
+Set Start:
+R -> E .
+E -> E .+ E 
+E -> E .* E 
+Set End.
+25: 
+Set Start:
+R -> d .[ ] 
+R -> d .( ) 
+E -> d .= E 
+E -> d .
+E -> d .( R' ) 
+Set End.
+26: 
+Set Start:
+R -> d [ .] 
+Set End.
+27: 
+Set Start:
+R -> d [ ] .
+Set End.
+28: 
+Set Start:
+R -> d ( .) 
+E -> d ( .R' ) 
+R' -> ._
+R' -> .R' R 
+Set End.
+29: 
+Set Start:
+R -> d ( ) .
+Set End.
+30: 
+Set Start:
+S -> d ( .R' ) 
+R' -> ._
+R' -> .R' R 
+Set End.
+31: 
+Set Start:
+S -> d ( R' .) 
+R' -> R' .R 
+R -> .E 
+R -> .d [ ] 
+R -> .d ( ) 
+E -> .d = E 
+E -> .i 
+E -> .d 
+E -> .d ( R' ) 
+E -> .E + E 
+E -> .E * E 
+E -> .( E ) 
+Set End.
+32: 
+Set Start:
+S -> d ( R' ) .
+Set End.
+33: 
+Set Start:
+S -> if .( B ) S 
+S -> if .( B ) S else S 
+Set End.
+34: 
+Set Start:
+S -> if ( .B ) S 
+S -> if ( .B ) S else S 
+B -> .B AND B 
+B -> .B OR B 
+B -> .E r E 
+B -> .E 
+E -> .d = E 
+E -> .i 
+E -> .d 
+E -> .d ( R' ) 
+E -> .E + E 
+E -> .E * E 
+E -> .( E ) 
+Set End.
+35: 
+Set Start:
+S -> if ( B .) S 
+S -> if ( B .) S else S 
+B -> B .AND B 
+B -> B .OR B 
+Set End.
+36: 
+Set Start:
+S -> if ( B ) .S 
+S -> if ( B ) .S else S 
+S -> .d = E 
+S -> .if ( B ) S 
+S -> .if ( B ) S else S 
+S -> .while ( B ) S 
+S -> .return E 
+S -> .{ S' } 
+S -> .d ( R' ) 
+Set End.
+37: 
+Set Start:
+S -> if ( B ) S .
+S -> if ( B ) S .else S 
+Set End.
+38: 
+Set Start:
+S -> if ( B ) S else .S 
+S -> .d = E 
+S -> .if ( B ) S 
+S -> .if ( B ) S else S 
+S -> .while ( B ) S 
+S -> .return E 
+S -> .{ S' } 
+S -> .d ( R' ) 
+Set End.
+39: 
+Set Start:
+S -> if ( B ) S else S .
+Set End.
+40: 
+Set Start:
+S -> while .( B ) S 
+Set End.
+41: 
+Set Start:
+S -> while ( .B ) S 
+B -> .B AND B 
+B -> .B OR B 
+B -> .E r E 
+B -> .E 
+E -> .d = E 
+E -> .i 
+E -> .d 
+E -> .d ( R' ) 
+E -> .E + E 
+E -> .E * E 
+E -> .( E ) 
+Set End.
+42: 
+Set Start:
+S -> while ( B .) S 
+B -> B .AND B 
+B -> B .OR B 
+Set End.
+43: 
+Set Start:
+S -> while ( B ) .S 
+S -> .d = E 
+S -> .if ( B ) S 
+S -> .if ( B ) S else S 
+S -> .while ( B ) S 
+S -> .return E 
+S -> .{ S' } 
+S -> .d ( R' ) 
+Set End.
+44: 
+Set Start:
+S -> while ( B ) S .
+Set End.
+45: 
+Set Start:
+S -> return .E 
+E -> .d = E 
+E -> .i 
+E -> .d 
+E -> .d ( R' ) 
+E -> .E + E 
+E -> .E * E 
+E -> .( E ) 
+Set End.
+46: 
+Set Start:
+S -> return E .
+E -> E .+ E 
+E -> E .* E 
+Set End.
+47: 
+Set Start:
+S -> { .S' } 
+S' -> .S 
+S' -> .S' ; S 
+S -> .d = E 
+S -> .if ( B ) S 
+S -> .if ( B ) S else S 
+S -> .while ( B ) S 
+S -> .return E 
+S -> .{ S' } 
+S -> .d ( R' ) 
+Set End.
+48: 
+Set Start:
+S -> { S' .} 
+S' -> S' .; S 
+Set End.
+49: 
+Set Start:
+S -> { S' } .
+Set End.
+50: 
+Set Start:
+S' -> S .
+Set End.
+51: 
+Set Start:
+B -> B AND .B 
+B -> .B AND B 
+B -> .B OR B 
+B -> .E r E 
+B -> .E 
+E -> .d = E 
+E -> .i 
+E -> .d 
+E -> .d ( R' ) 
+E -> .E + E 
+E -> .E * E 
+E -> .( E ) 
+Set End.
+52: 
+Set Start:
+B -> B AND B .
+B -> B .AND B 
+B -> B .OR B 
+Set End.
+53: 
+Set Start:
+B -> B OR .B 
+B -> .B AND B 
+B -> .B OR B 
+B -> .E r E 
+B -> .E 
+E -> .d = E 
+E -> .i 
+E -> .d 
+E -> .d ( R' ) 
+E -> .E + E 
+E -> .E * E 
+E -> .( E ) 
+Set End.
+54: 
+Set Start:
+B -> B OR B .
+B -> B .AND B 
+B -> B .OR B 
+Set End.
+55: 
+Set Start:
+B -> E .r E 
+B -> E .
+E -> E .+ E 
+E -> E .* E 
+Set End.
+56: 
+Set Start:
+B -> E r .E 
+E -> .d = E 
+E -> .i 
+E -> .d 
+E -> .d ( R' ) 
+E -> .E + E 
+E -> .E * E 
+E -> .( E ) 
+Set End.
+57: 
+Set Start:
+B -> E r E .
+E -> E .+ E 
+E -> E .* E 
+Set End.
+58: 
+Set Start:
+D' -> D' D .
+Set End.
+59: 
+Set Start:
+D -> T .d 
+D -> T .d [ i ] 
+D -> T .d ( A' ) { D' S' } 
+Set End.
+60: 
+Set Start:
+D -> T d .
+D -> T d .[ i ] 
+D -> T d .( A' ) { D' S' } 
+Set End.
+61: 
+Set Start:
+D -> T d [ .i ] 
+Set End.
+62: 
+Set Start:
+D -> T d [ i .] 
+Set End.
+63: 
+Set Start:
+D -> T d [ i ] .
+Set End.
+64: 
+Set Start:
+D -> T d ( .A' ) { D' S' } 
+A' -> ._
+A' -> .A' A 
+Set End.
+65: 
+Set Start:
+D -> T d ( A' .) { D' S' } 
+A' -> A' .A 
+A -> .T d 
+A -> .d [ ] 
+A -> .T d ( ) 
+T -> .int void 
+Set End.
+66: 
+Set Start:
+D -> T d ( A' ) .{ D' S' } 
+Set End.
+67: 
+Set Start:
+D -> T d ( A' ) { .D' S' } 
+D' -> ._
+D' -> .D' D 
+Set End.
+68: 
+Set Start:
+D -> T d ( A' ) { D' .S' } 
+D' -> D' .D 
+S' -> .S 
+S' -> .S' ; S 
+D -> .T d 
+D -> .T d [ i ] 
+D -> .T d ( A' ) { D' S' } 
+S -> .d = E 
+S -> .if ( B ) S 
+S -> .if ( B ) S else S 
+S -> .while ( B ) S 
+S -> .return E 
+S -> .{ S' } 
+S -> .d ( R' ) 
+T -> .int void 
+Set End.
+69: 
+Set Start:
+D -> T d ( A' ) { D' S' .} 
+S' -> S' .; S 
+Set End.
+70: 
+Set Start:
+D -> T d ( A' ) { D' S' } .
+Set End.
+71: 
+Set Start:
+T -> int .void 
+Set End.
+72: 
+Set Start:
+T -> int void .
+Set End.
+73: 
+Set Start:
+A' -> A' A .
+Set End.
+74: 
+Set Start:
+A -> T .d 
+A -> T .d ( ) 
+Set End.
+75: 
+Set Start:
+A -> T d .
+A -> T d .( ) 
+Set End.
+76: 
+Set Start:
+A -> T d ( .) 
+Set End.
+77: 
+Set Start:
+A -> T d ( ) .
+Set End.
+78: 
+Set Start:
+A -> d .[ ] 
+Set End.
+79: 
+Set Start:
+A -> d [ .] 
+Set End.
+80: 
+Set Start:
+A -> d [ ] .
+Set End.

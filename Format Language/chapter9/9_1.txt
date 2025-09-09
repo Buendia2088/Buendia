@@ -1,0 +1,12 @@
+@table
+(outer: NULL width: 84 argc: 0 arglist: NIL rtype: VOID level: 0
+code:[]
+entry: (name: x type: INT offset: 4)
+entry: (neme: b type: ARRAY base: 76 dims: 2 dim[0]: 3 dim[1]: 6 etype: FLO)
+entry: (name: foo type: FUNC offset: 84 mytab: foo@table))
+
+foo@table
+(outer: @table width: 8 argc: 1 arglist: (x) rtype: INT level: 1
+code: []
+entry: (name: x type: INT offset: 4)
+entry: (name: y type: INT offset: 8))

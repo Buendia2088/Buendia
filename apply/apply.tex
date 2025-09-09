@@ -1,0 +1,256 @@
+% !TEX program = xelatex
+\documentclass[11pt]{ctexart}
+
+% ---------- 基础与链接 ----------
+\usepackage[a4paper,margin=24mm]{geometry}
+\usepackage[hyphens]{url}            % 允许 URL 自动断行
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=blue]{hyperref}
+\urlstyle{same}                      % 让 \url 使用与正文一致的字体，避免中文缺字
+\hypersetup{breaklinks=true}
+\Urlmuskip=0mu plus 1mu              % URL 断行更灵活
+
+% ---------- 表格与列表 ----------
+\usepackage{tabularx,booktabs,array}
+\usepackage{makecell}                % 多行表头
+\usepackage{enumitem}
+\usepackage{titlesec}
+\setlist[itemize]{left=0pt,itemsep=3pt,topsep=2pt}
+\setlist[enumerate]{left=0pt,itemsep=3pt,topsep=2pt}
+\titleformat{\section}{\large\bfseries}{}{0pt}{}
+
+% ---------- 便捷条目命令 ----------
+\newcommand{\Project}[6]{%
+\textbf{#1} \hfill \emph{#2}\par
+\emph{角色：}#3 \quad \emph{技术栈：}#4\par
+\emph{亮点：}#5\par
+\textbf{链接：}\href{#6}{#6}\par\vspace{4pt}
+}
+\newcommand{\CourseRow}[3]{#1 & #2 & #3\\}
+\newcommand{\Honor}[4]{\textbf{#1} — #2 \hfill #3\par #4\par\vspace{3pt}}
+
+% == SIMPLE DOTTED TOC (no extra packages) ==
+\makeatletter
+\renewcommand{\contentsname}{目录}
+\renewcommand{\@dotsep}{1.6}      % 值越小点越密（默认 4.5）
+\renewcommand{\@pnumwidth}{2em}   % 页码占位宽度
+\renewcommand{\@tocrmarg}{3em}    % 右侧边距
+\renewcommand{\l@section}{\@dottedtocline{1}{0em}{2.3em}}
+\renewcommand{\l@subsection}{\@dottedtocline{2}{1.5em}{3.2em}}
+\renewcommand{\l@subsubsection}{\@dottedtocline{3}{3.8em}{4.1em}}
+\makeatother
+
+% 小一号目录命令（⚠️ 这里必须是 \tableofcontents）
+\newcommand{\SimpleTOC}{{\small\tableofcontents}}
+% == END SIMPLE DOTTED TOC ==
+\begin{document}
+% ---- 目录 ----
+\SimpleTOC
+\medskip
+\newpage
+
+
+% ================= 抬头 =================
+% 需要在导言区（\documentclass 后）放：
+% \usepackage{ctex}          % 中文支持（XeLaTeX/LuaLaTeX）
+% \usepackage{hyperref}      % 链接
+% \hypersetup{colorlinks=true, urlcolor=blue}
+
+\begin{center}
+  {\zihao{2}\bfseries AI赋能专业建设试点班 报名表}\par\vspace{4pt}
+  {\large \bfseries 程远}
+  
+  2234412848
+  
+  计试2301
+  
+  13725057675
+
+  \href{mailto:cy1656736387@gmail.com}{cy1656736387@gmail.com}\par
+  
+  \href{https://github.com/Buendia2088}{https://github.com/Buendia2088}
+\end{center}
+\vspace{2mm}\hrule\vspace{2mm}
+
+
+% ================= 1. 摘要 =================
+\section{摘要}
+\vspace{-2pt}
+\noindent 我在计算机基础与工程实现上保持\textbf{并重}：课程方面（数据结构与算法、计算机系统导论、汇编等）成绩稳定，当前均分 \textbf{93.29}/100、专业排名 \textbf{1/41}；我的科研方向是\textbf{持续学习（Continual Learning）}，目前已完成 CIL/TIL/DIL 基线、CPT/DAPT/LoRA-KD/Replay/EWC 等方法的系统对比与脚本化复现。\par
+\noindent 希望能利用试点班的\textbf{固定工位}与\textbf{GPU 算力}支撑使我的实验能在统一环境长期稳定运行；同时我珍惜与\textbf{任课老师面对面}的交流机会，力争将阶段性成果\textbf{打磨为论文}并尝试投稿。
+
+\section{申请动机}
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+  \item \textbf{固定工位：}希望在试点班获得\textbf{稳定工位}（配套显示器与基本调试设备），保持持续可用的开发与训练环境，便于长时实验与随手记录。
+  \item \textbf{算力支持：}充分利用试点班提供的\textbf{GPU算力}与平台，将现有 CL for LLM 实验迁移到统一环境，保证可复现与高效迭代。
+  \item \textbf{面对面交流：}重视与\textbf{任课老师/授课老师}的当面沟通与即时答疑（课后、实验室走访、office hour），在高频反馈中快速调整实验与写作方向。
+  \item \textbf{成果目标：}在老师的指导下，把阶段性成果\textbf{打磨为论文}并尝试投稿。
+\end{itemize}
+
+\section{AI 能力与技术栈}
+\vspace{-2pt}
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+  \item \textbf{AI 协作开发：}把 GPT 当“结对程序员”，用于环境/依赖问题定位（Conda、Docker、HF 缓存、权限）、自动生成可运行脚手架与单元测试并迭代到可复现。
+  \item \textbf{AI 驱动的实验运营：}用 LLM 生成/改写训练脚本与配置，设计批量实验计划；让其\emph{解析日志→汇总指标→产出表格/曲线}（CSV→\LaTeX{} 表、Mermaid/Matplotlib 代码），统一输出 before/after、Avg Acc、BWT、PPL 的报告。
+  \item \textbf{AI 强化写作与排版：}论文段落润色与结构重组、中文/英文互译；直接生成 Overleaf-ready 的 \LaTeX{} 模块（摘要、图表、算法、参考文献以及这份报名表）。
+  \item \textbf{AI 沟通产出：}按对象（老师、合作者、行政）用 LLM 起草并调整语气风格，高效完成文本任务。
+  \item \textbf{框架与工具：}Python（面向工程的模块化/脚本化）、PyTorch、Transformers；能够应用梯度检查点、调度与日志归档。
+  \item \textbf{训练/微调：}CPT（Continual Pre-Training）、DAPT、LoRA/PEFT、LoRA-KD、EWC、Replay、梯度投影（A-GEM 思想）；能在统一脚本中做 before/after 评测（PPL、Avg Acc、BWT）。
+  \item \textbf{模型与任务：}GPT-2/XLM-R 等语言模型；ResNet等表征模型；具备MNIST等基准与跨域设定的实验经验。
+  \item \textbf{工程与复现：}Linux、Macos与Windows基本命令；统一环境与随机种子管理，结果表与曲线自动汇总，产出可复现实验报告与 README。
+\end{itemize}
+\section{近期项目 / 科研经历}
+\textbf{以下内容均为本人主动自驱学习与研究}
+% 统一用到的安全代码样式与表格样式
+\providecommand{\code}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\CLTableSetup}{\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.1}\footnotesize}
+
+% ---------- 项目 1（置顶）：连续学习基线 ----------
+\Project{连续学习基线实验：CIL / TIL / DIL（MNIST）}{2025}
+{唯一贡献者}{Python, PyTorch, HuggingFace Transformers, PEFT/LoRA}
+{基于 \code{MNIST} 构造 5 个顺序任务，在 \textbf{CIL}（共享头、任务标签未知）、\textbf{TIL}（多头、任务标签已知）与 \textbf{DIL}（分布变化）三种场景统一评测 \emph{平均准确率（Avg Acc）} 与 \emph{BWT}。方法覆盖 \code{baseline}、\code{replay}、\code{ewc}、\code{kd}、\code{proj} 及其组合。}
+{https://github.com/Buendia2088/ContinualLearning/tree/main/basis}
+
+{\small
+\noindent\textbf{要点结论}\;（单次代表结果）：
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+  \item CIL：\textbf{Replay + Proj} 最优（\code{replay_proj}，Avg Acc 90.0\%，BWT -8.4）
+  \item DIL：\textbf{Replay} 简洁有效（\code{replay}，Avg Acc 95.8\%，BWT 1.1）
+  \item TIL：\textbf{KD} 最稳（\code{kd}，Avg Acc 98.4\%，BWT -0.4）
+\end{itemize}
+
+\noindent\textbf{结果一：Avg Acc（\%）}\\[-4pt]
+\begin{center}
+\CLTableSetup
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Method & CIL & DIL & TIL \\
+\midrule
+\code{baseline}      & 19.1 & 88.0 & 98.4 \\
+\code{ewc}           & 19.4 & 85.3 & 98.4 \\
+\code{kd}            & 46.2 & 68.4 & 98.4 \\
+\code{proj}          & 19.3 & 86.7 & 98.2 \\
+\code{replay}        & 89.3 & 95.8 & 96.4 \\
+\code{replay_kd}     & 86.6 & 90.9 & 96.7 \\
+\code{replay_ewc}    & 89.6 & 95.4 & 96.2 \\
+\code{replay_proj}   & 90.0 & 95.3 & 96.8 \\
+\code{replay_ewc_kd} & 87.4 & 91.3 & 95.5 \\
+\code{ewc_kd}        & 47.3 & 9.8  & 98.3 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent\textbf{结果二：BWT（百分点）}\\[-4pt]
+\begin{center}
+\CLTableSetup
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Method & CIL & DIL & TIL \\
+\midrule
+\code{baseline}      & -99.1 & -7.9  & -0.5 \\
+\code{ewc}           & -98.9 & -10.5 & -0.4 \\
+\code{kd}            & -39.0 & -10.9 & -0.4 \\
+\code{proj}          & -98.9 & -9.9  & -0.7 \\
+\code{replay}        & -9.4  & 1.1   & -0.8 \\
+\code{replay_kd}     & 34.6  & 12.2  & -0.2 \\
+\code{replay_ewc}    & -8.8  & 0.4   & -0.9 \\
+\code{replay_proj}   & -8.4  & 0.6   & 0.1 \\
+\code{replay_ewc_kd} & 36.4  & 12.0  & -1.7 \\
+\code{ewc_kd}        & -30.6 & -62.2 & -0.5 \\
+\bottomrule
+\end{tabular}
+\end{center}
+} % end small
+
+% ---------- 项目 2：DAP ----------
+\Project{DAP（Domain-Adaptive Pre-training）对比实验：LoRA / LoRA+Rewarm / LayerExp / LoRA+Replay / Full DAPT}{2025}
+{唯一贡献者}{Transformers, PEFT-LoRA, Scheduler, Logging, Reproducibility}
+{面向连续学习场景，将 DAP 与多种参数/训练策略结合，比较“新域适配”与“旧域遗忘”的权衡；统一输出 \code{dap_summary.json/csv} 与可视化。下表为以 PPL 指标的摘要：}
+{https://github.com/Buendia2088/ContinualLearning/tree/main/clForLLM/dap}
+
+{\small
+\begin{center}
+\CLTableSetup
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Variant & \makecell[r]{Old PPL\\(Before)} & \makecell[r]{Old PPL\\(After)} & \makecell[r]{$\Delta$ Old\\PPL} & \makecell[r]{New PPL\\(Before)} & \makecell[r]{New PPL\\(After)} & \makecell[r]{New PPL\\$\downarrow$} \\
+\midrule
+LoRA        & 3.199 & 3.658  & 0.459  & 90.266 & 3.586  & 86.679 \\
+LoRA+Rewarm & 3.199 & 3.639  & 0.440  & 90.266 & 3.573  & 86.692 \\
+LayerExp    & 3.199 & 3.346  & \textbf{0.147} & 90.266 & 12.918 & 77.347 \\
+LoRA+Replay & 3.199 & 3.552  & 0.353  & 90.266 & 3.550  & 86.715 \\
+Full DAPT   & 3.199 & 13.381 & 10.181 & 90.266 & 48.797 & 41.469 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent\textbf{要点}\;：LoRA 系在新域适配最强（New PPL $\approx$3.55–3.59），\textbf{LayerExp} 旧域遗忘最小（$\Delta$+0.147），\textbf{Full DAPT} 对旧域破坏显著且新域收敛较差。
+} % end small
+
+% ---------- 项目 3：XLM-R CPT ----------
+\Project{XLM-R CPT 连续预训练：LoRA / Full / Block Expansion}{2025}
+{唯一贡献者}{XLM-R, PEFT-LoRA, FP16/Grad Checkpointing, Rewarm, Logging}
+{在 XLM-R 基座上进行 \textbf{CPT}（Continual Pre-Training）对照：LoRA、Full（全量微调）与 Block Expansion。统一用 \code{metrics_before_after.json} 记录 old/new PPL；下表为摘要：}
+{https://github.com/Buendia2088/ContinualLearning/tree/main/clForLLM/cpt}
+
+{\small
+\begin{center}
+\CLTableSetup
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Variant & \makecell[r]{Old PPL\\(Before)} & \makecell[r]{Old PPL\\(After)} & \makecell[r]{$\Delta$ Old\\PPL} & \makecell[r]{New PPL\\(Before)} & \makecell[r]{New PPL\\(After)} & \makecell[r]{New PPL\\$\downarrow$} \\
+\midrule
+XLM-R LoRA     & 3.199 & 3.601  & 0.402  & 90.266 & 3.653  & 86.612 \\
+XLM-R Full CPT & 3.199 & 18.416 & 15.217 & 90.266 & 40.944 & 49.322 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent\textbf{要点}\;：\textbf{LoRA} 在 \code{fp16+gradient_checkpointing+rewarm} 设置下稳定、适配强（New PPL 3.653；旧域 $\Delta$+0.402）；\textbf{Full} 遗忘严重（旧域 18.416；新域仅 40.944），成本高且不推荐。
+} % end small
+
+% ================= 4. 课程与成绩 =================
+% 需要在导言区（\documentclass 后）已加载：
+% \usepackage{booktabs,tabularx,array}
+
+% 可放在导言区：定义一个居中列类型 C{<宽度>}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+% —— 成绩与概况 ——
+\section{课程成绩}
+\noindent 平均分：\textbf{93.29}/100 \quad 专业排名：\textbf{1}/41 \quad 已修学分：\textbf{101}\par
+部分课程成绩如下：
+\medskip
+\renewcommand{\arraystretch}{1.12} % 行距微调
+
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X C{2.3cm}@{}}
+\toprule
+\textbf{课程} & \textbf{成绩}\\
+\midrule
+计算机程序设计 & 100\\
+线性代数       & 100\\
+游戏设计与开发 & 99\\
+数据结构与算法 & 98\\
+计算机系统导论 & 97\\
+汇编语言       & 95\\
+\bottomrule
+\end{tabularx}
+
+
+
+% ================= 5. 荣誉（含证书/竞赛） =================
+\section{所获荣誉}
+
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt,label={}]
+  \item 2023--2024 学年本科生国家奖学金
+  \item 2023--2024 年西安交通大学优秀学生
+  \item 2024--2025 学年优衣库奖学金
+  \item 2024--2025 学年西安交通大学新时代青少年先锋
+\end{itemize}
+
+
+
+% ================= 6. 申请动机（动机 / 目标 / 产出承诺） =================
+% —— 申请动机（精简版）——
+
+
+\end{document}

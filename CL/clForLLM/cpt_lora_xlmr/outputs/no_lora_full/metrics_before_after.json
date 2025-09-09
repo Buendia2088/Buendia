@@ -1,0 +1,58 @@
+{
+  "config": {
+    "model_name": "xlm-roberta-base",
+    "old_train": "data/old_train.txt",
+    "old_val": "data/old_val.txt",
+    "new_train": "data/new_train.txt",
+    "new_val": "data/new_val.txt",
+    "output_dir": "outputs/no_lora_full",
+    "epochs": 3,
+    "batch_size": 6,
+    "grad_accum_steps": 1,
+    "seq_len": 64,
+    "mask_prob": 0.15,
+    "lr": 0.0002,
+    "rewarm_lr": true,
+    "warmup_ratio": 0.06,
+    "weight_decay": 0.01,
+    "fp16": true,
+    "bf16": false,
+    "seed": 42,
+    "lora_r": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.1,
+    "lora_targets": "query,value",
+    "no_lora": false,
+    "full_finetune": true,
+    "unfreeze_ln": false,
+    "unfreeze_bias": false,
+    "old_replay_ratio": 0.0,
+    "gradient_checkpointing": true,
+    "gc_use_reentrant": false,
+    "use_bf16": false
+  },
+  "before": {
+    "old_val": {
+      "loss": 1.1628875732421875,
+      "ppl_approx": 3.199157753856675
+    },
+    "new_val": {
+      "loss": 4.502756118774414,
+      "ppl_approx": 90.2655714140822
+    }
+  },
+  "after": {
+    "old_val": {
+      "loss": 2.9132308959960938,
+      "ppl_approx": 18.416203387732203
+    },
+    "new_val": {
+      "loss": 3.7122013568878174,
+      "ppl_approx": 40.943839396262405
+    }
+  },
+  "deltas": {
+    "old_val_loss_diff": 1.7503433227539062,
+    "new_val_loss_diff": -0.7905547618865967
+  }
+}

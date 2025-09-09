@@ -1,0 +1,28 @@
+// this is the attribute grammar
+S -> for(S; B; S) S{ 
+    l = newl();
+    S[0].code =
+        S[1].code ++ 
+        gen[LABEL ?l] ++
+        B.code ++
+        genl[LABEL ?B.tc] ++
+        S[3].code ++
+        S[2].code ++
+        gen[GOTO ?l] ++
+        genl[LABEL ?B.fc]
+}
+
+// this is the code
+code = [
+    t1 = 0; // code 1
+    i = t1; // code 1
+    LABEL l3;
+    t2 = 100; // code 2
+    IF i < t2 l1 ELSE l2; // code 2
+    LABEL l1;
+    t3 = 1; // code 3
+    i = i + t3; // code 3
+    print i; // code 4
+    GOTO l3;
+    LABEL l2
+]

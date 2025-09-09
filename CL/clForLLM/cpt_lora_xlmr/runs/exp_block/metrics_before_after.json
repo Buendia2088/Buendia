@@ -1,0 +1,68 @@
+{
+  "config": {
+    "model_name": "xlm-roberta-base",
+    "old_train": "data\\old_train.txt",
+    "old_val": "data\\old_val.txt",
+    "new_train": "data\\new_train.txt",
+    "new_val": "data\\new_val.txt",
+    "output_dir": "runs\\exp_block",
+    "epochs": 3,
+    "batch_size": 8,
+    "grad_accum_steps": 1,
+    "seq_len": 64,
+    "mask_prob": 0.15,
+    "lr": 0.0002,
+    "rewarm_lr": true,
+    "warmup_ratio": 0.06,
+    "weight_decay": 0.01,
+    "fp16": true,
+    "bf16": false,
+    "seed": 42,
+    "expansion": "block",
+    "expand_layers": 2,
+    "expand_ffn_mult": 2.0,
+    "expand_heads": 0,
+    "expansion_dropout": 0.1,
+    "expansion_tune_lm_head": true,
+    "lora_r": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.1,
+    "lora_targets": "query,value",
+    "no_lora": false,
+    "full_finetune": false,
+    "unfreeze_ln": false,
+    "unfreeze_bias": false,
+    "unfreeze_lm_head": false,
+    "old_replay_ratio": 0.1,
+    "gradient_checkpointing": true,
+    "gc_use_reentrant": false,
+    "compare_rewarm": false,
+    "use_bf16": false,
+    "use_rewarm": true,
+    "lr_scheduler_type": "cosine"
+  },
+  "before": {
+    "old_val": {
+      "loss": 1.1628875732421875,
+      "ppl_approx": 3.199157753856675
+    },
+    "new_val": {
+      "loss": 4.502756118774414,
+      "ppl_approx": 90.2655714140822
+    }
+  },
+  "after": {
+    "old_val": {
+      "loss": 15.143750190734863,
+      "ppl_approx": 3774393.2177841505
+    },
+    "new_val": {
+      "loss": 9.882031440734863,
+      "ppl_approx": 19575.448661711565
+    }
+  },
+  "deltas": {
+    "old_val_loss_diff": 13.980862617492676,
+    "new_val_loss_diff": 5.379275321960449
+  }
+}

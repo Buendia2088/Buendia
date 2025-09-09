@@ -1,0 +1,184 @@
+import torch
+from torch import nn
+from model import *
+import numpy as np
+from sklearn.metrics import f1_score
+from dataset import MyDataset
+from torch.utils.data.dataloader import DataLoader
+from torchvision.transforms import Compose, ToTensor, Normalize
+from util import setup_seeds
+from torchvision.transforms import Lambda
+from sklearn.metrics import confusion_matrix
+
+class Trainer:
+    '''
+    You are supposed to implement the Trainer following the instructions
+    '''
+    def __init__(
+          self,
+          data_dir: str = "data",
+          log_dir: str = "log",
+          exp_name: str = "first_take_CNN",    
+          model_name: str = "MLP_D",
+          epochs: int = 5,
+          device: str =  "cpu",
+          batch_size: int = 64,
+          lr: float = 0.001,
+          weight_decay: float = 0.0001,
+          random_seed: int = 0,
+          optimizer=torch.optim.Adam,
+     ):
+        setup_seeds(random_seed)
+        self.epochs = epochs
+        self.device = device
+        if model_name == 'MLP':
+            self.model = MLP(in_channels=3*32*32, hidden_channels=128, out_channels=10)
+            transform = Compose([Lambda(lambda x: x.view(-1))])
+
+        elif model_name == 'MLP_D':
+            self.model = MLP_D(in_channels=3*32*32, hidden_channels=128, out_channels=10, dropout_rate=0.5)
+            transform = Compose([Lambda(lambda x: x.view(-1))])
+                
+        elif model_name == 'CNN':
+            transform = None
+            self.model = CNN(in_channels=3, hidden_channels=16, out_channels=10)
+        self.optimizer = optimizer(self.model.parameters(), lr=lr, weight_decay=weight_decay)
+
+        self.criterion = nn.CrossEntropyLoss()
+
+        train_dataset = MyDataset(data_dir=data_dir, transform=transform, mode='train')
+        self.train_dataloader = DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
+
+        val_dataset = MyDataset(data_dir=data_dir, transform=transform, mode='val')
+        self.val_dataloader = DataLoader(dataset=val_dataset, batch_size=batch_size, shuffle=False)
+
+        test_dataset = MyDataset(data_dir=data_dir, transform=transform, mode='test')
+        self.test_dataloader = DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=False)
+
+        self.log_file = log_dir + "/" + exp_name + ".txt"
+        f = open(self.log_file, "w")
+        info = f"exp name{exp_name}, model name: {model_name}, epochs: {epochs}, device: {device}, batch size: {batch_size}, lr: {lr}, weight decay: {weight_decay} random seed: {random_seed}\n"
+        f.write(info)
+        
+    def load_checkpoint(self, checkpoint_path: str):
+        '''
+        load model and optimizer checkpoint
+        learn how to save checkpoint by save_checkpoint function and implement load_checkpoint
+        '''
+        checkpoint = torch.load(checkpoint_path)
+        self.model.load_state_dict(checkpoint["model"])
+        self.optimizer.load_state_dict(checkpoint["optimizer"])
+
+    def save_checkpoint(self, checkpoint_path: str):
+        '''
+        save model and optimizer checkpoint
+        '''
+        checkpoint = {
+            "model": self.model.state_dict(),
+            "optimizer": self.optimizer.state_dict()
+        }
+        torch.save(checkpoint, checkpoint_path)
+
+    @torch.no_grad()
+    def validate(self):
+        self.model.eval()  # 设置模型为评估模式
+        val_loss = 0.0
+        correct = 0
+        total = 0
+        y_true = []
+        y_pred = []
+        for x_val, y_val in self.val_dataloader:
+            x_val, y_val = x_val.to(self.device), y_val.to(self.device)
+
+            outputs = self.model(x_val)
+            loss = self.criterion(outputs, y_val)
+            val_loss += loss.item()
+
+            _, predicted = torch.max(outputs, 1)
+            y_true.extend(y_val.cpu().numpy())
+            y_pred.extend(predicted.cpu().numpy())
+            total += y_val.size(0)
+            correct += (predicted == y_val).sum().item()
+
+        val_loss /= len(self.val_dataloader)
+        val_accuracy = correct / total
+        conf_matrix = confusion_matrix(y_true, y_pred)
+        f1 = f1_score(y_true, y_pred, average='weighted')  # 计算 F1 值
+        log_content = f'Validation Loss: {val_loss:.4f}, Accuracy: {val_accuracy:.4f}, F1 Score: {f1:.4f}\n'
+        log_content += 'Validatoin Confusion Matrix:\n'
+        log_content += f'{conf_matrix}\n'
+        print(log_content)
+        with open(self.log_file, "a") as f:
+            f.write(log_content)
+
+    @torch.no_grad()
+    def test(self):
+        self.model.eval()  # 设置模型为评估模式
+        test_loss = 0.0
+        correct = 0
+        total = 0
+        y_true = []
+        y_pred = []
+
+        for x_test, y_test in self.test_dataloader:
+            x_test, y_test = x_test.to(self.device), y_test.to(self.device)
+            outputs = self.model(x_test)
+            loss = self.criterion(outputs, y_test)
+            test_loss += loss.item()
+            _, predicted = torch.max(outputs, 1)
+            y_true.extend(y_test.cpu().numpy())
+            y_pred.extend(predicted.cpu().numpy())
+            total += y_test.size(0)
+            correct += (predicted == y_test).sum().item()
+
+        test_loss /= len(self.test_dataloader)
+        test_accuracy = correct / total
+        conf_matrix = confusion_matrix(y_true, y_pred)
+        f1 = f1_score(y_true, y_pred, average='weighted')  # 计算 F1 值
+        log_content = f'Test Loss: {test_loss:.4f}, Accuracy: {test_accuracy:.4f}, F1 Score: {f1:.4f}\n'
+        log_content += 'Test Confusion Matrix:\n'
+        log_content += f'{conf_matrix}\n'
+        print(log_content)
+        with open(self.log_file, "a") as f:
+            f.write(log_content)
+
+    def train(self):
+        for epoch in range(self.epochs):
+            # why do we need to set self.model.train()
+            self.model.train()
+            for step, (x, y) in enumerate(self.train_dataloader):
+                
+                x, y = x.to(self.device), y.to(self.device)
+                
+                outputs = self.model(x)
+
+                loss = self.criterion(outputs, y)
+
+                self.optimizer.zero_grad()
+                loss.backward()
+                self.optimizer.step()
+
+                # log every 200 steps
+                if step % 200 == 0:
+                    print(f"Epoch [{epoch}/{self.epochs}], Step [{step}/{len(self.train_dataloader)}], Train Loss: {loss.item()}")
+                    with open(self.log_file, "a") as f:
+                        f.write(f"Epoch [{epoch}/{self.epochs}], Step [{step}/{len(self.train_dataloader)}], Train Loss: {loss.item()}\n")
+            self.validate()
+
+            # think when to test
+        self.test()
+
+        with open(self.log_file, "a") as f:
+            f.write("Training finished.\n")
+
+        self.save_checkpoint("model_checkpoint.pth")
+
+        pass
+
+
+def main():  
+    model_name = input("Enter model name: (MLP/MLP_D(MLP_DROPOUT)/CNN)")
+    trainer = Trainer(model_name=model_name)
+    trainer.train()
+if __name__ == "__main__":
+    main()

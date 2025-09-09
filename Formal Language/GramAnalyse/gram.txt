@@ -1,0 +1,38 @@
+P'  P  
+P   D' S'
+D'  _
+D'  D' D
+D   T  d
+D   T  d [ i ]
+D   T  d ( A' ) { D' S' }
+T   int void
+A'  _
+A'  A' A
+A   T  d
+A   d  [ ]
+A   T  d ( )
+S'  S
+S'  S' ; S
+S   d = E
+S   if ( B ) S
+S   if ( B ) S else S
+S   while ( B ) S
+S   return E
+S   { S' }
+S   d ( R' )
+B   B AND B
+B   B OR B
+B   E r E
+B   E
+E   d = E
+E   i
+E   d
+E   d ( R' )
+E   E + E
+E   E * E
+E   ( E )
+R'  _
+R'  R' R
+R   E
+R   d [ ]
+R   d ( )

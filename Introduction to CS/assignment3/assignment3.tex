@@ -1,0 +1,221 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{diagbox}
+\usepackage{amsmath}
+\usepackage{lmodern}
+
+
+\geometry{left=1.0in,right=1.0in,top=0.3in,bottom=0.3in}
+
+\pagestyle{fancy}
+\fancyhf{} 
+\ctexset{
+    section={
+        format=\raggedright
+    }
+}
+
+\begin{document}
+
+\title{\vspace{0cm}第三次作业}
+\author{程远2234412848}
+\date{}
+\maketitle
+
+\section{第一题}
+
+我将整个加法过程分为以下五步（纸带起始位置为左起第一个非空数据）：
+\begin{table}[h!]
+    \begin{center}
+        \caption{启动程序，找到加号}
+        \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            当前状态为 & 纸带数据为 & 改写纸带为 & 改写状态为 & 指针移动为 \\
+            \hline
+            STA & 0 & 0 & STA & R \\
+            \hline
+            STA & 1 & 1 & STA & R \\
+            \hline
+            STA & + & + & $F_{J_{0}P_{0}}$ & L \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+
+\begin{table}[h!]
+    \begin{center}
+        \caption{找到对应位并进行加法}
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+            \hline
+            当前状态为 & 纸带数据为 & 改写纸带为 & 改写状态为 & 指针移动为 \\
+            \hline
+            $F_{J_{i}P_{j}}$ & $X$ & $X_{C}$ & $X_{J_{i}P_{j}}$ & R \\
+            \hline
+            $F_{J_{i}P_{j}}$ & $X_{C}$ & $X_{C}$ & $F_{J_{i}P_{j}}$ & R \\
+            \hline
+            $X_{J_{i}P_{j}}$ & $X'$ & $X'$ & $X_{J_{i}P_{j}}$ & R \\
+            \hline
+            $X_{J_{i}P_{0}}$ & + & + & $X_{J_{i}P_{1}}$ & R \\
+            \hline
+            $F_{J_{i}P_{0}}$ & + & + & $F_{J_{i}P_{1}}$ & R \\
+            \hline
+            $X_{J_{i}P_{1}}$ & = & = & $X_{J_{i}P_{2}}$ & L \\
+            \hline
+            $F_{J_{i}P_{1}}$ & = & = & $F_{J_{i}P_{2}}$ & L \\
+            \hline
+            $X_{J_{i}P_{2}}$ & $X'$ & $X'_{C}$ & $X''_{J_{i'}T}$ & L \\
+            \hline
+            $F_{J_{i}P_{2}}$ & $X$ & $X_{C}$ & $(X\,XOR\,i)_{J_{(X\,XOR\,i)}T}$ & L\\
+            \hline
+            $X_{J_{i}P_{2}}$ & + & + & $X_{J_{i'}T}$ & L \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{equation*}
+    X''=(X\,XOR\,X')\,XOR\,i
+\end{equation*}
+
+\begin{equation*}
+    i'= (X\,AND\,X')\,OR\,(X\,AND\,i)\,OR\,(X'\,AND\,i)
+\end{equation*}
+
+\newpage
+
+\begin{table}[h!]
+    \begin{center}
+        \caption{将结果传递至输入纸带左边}
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+            \hline
+            当前状态为 & 纸带数据为 & 改写纸带为 & 改写状态为 & 指针移动为 \\
+            \hline
+            $X_{J_{i}T}$ & $X'$ & $X'$ & $X_{J_{i}T}$ & L \\
+            \hline
+            $X_{J_{i}T}$ & $X'_{C}$ & $X'_{C}$ & $X_{J_{i}T}$ & L \\
+            \hline
+            $X_{J_{i}T}$ & + & + & $X_{J_{i}T}$ & L \\
+            \hline
+            $X_{J_{i}T}$ & NULL & $X_{T}$ & $F_{J_{i}P_{0}}$ & R \\
+            \hline
+            $X_{J_{i}T}$ & $X'_{T}$ & $X'_{T}$ & $X_{J_{i}T}$ & L \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{table}[h!]
+    \begin{center}
+        \caption{处理最后一次位运算}
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+            \hline
+            当前状态为 & 纸带数据为 & 改写纸带为 & 改写状态为 & 指针移动为 \\
+            \hline
+            $F_{J_{i}P_{2}}$ & = & = & $F_{J_{i}E}$ & L \\
+            \hline
+            $F_{J_{i}E}$ & $X_{C}$ & $X$ & $F_{J_{i}E}$ & L \\
+            \hline
+            $F_{J_{i}E}$ & + & + & $F_{J_{i}E}$ & L \\
+            \hline
+            $F_{J_{i}E}$ & = & = & $F_{J_{i}E}$ & L \\
+            \hline
+            $F_{J_{1}E}$ & NULL & $1_{T}$ & $M_{f}$ & N \\
+            \hline
+            $F_{J_{0}E}$ & NULL & NULL & $M_{f}$ & N \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\begin{table}[h!]
+    \begin{center}
+        \caption{将输入左边的运算结果移动到等号右边，并处理格式}
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+            \hline
+            当前状态为 & 纸带数据为 & 改写纸带为 & 改写状态为 & 指针移动为 \\
+            \hline
+            $M_{f}$ & $X_{T}$ & NULL & $M_{f}$ & R \\
+            \hline
+            $M_{f}$ & X & X & $M_{fx}$ & R \\
+            \hline
+            $M_{fx}$ & + & + & $M_{fx}$ & R \\
+            \hline
+            $M_{fx}$ & = & = & $M_{fx}$ & R \\
+            \hline
+            $M_{fx}$ & NULL & X & $M_{b}$ & L \\
+            \hline
+            $M_{b}$ & X & X & $M_{b}$ & L \\
+            \hline
+            $M_{b}$ & + & + & $M_{b}$ & L \\
+            \hline
+            $M_{b}$ & = & = & $M_{b}$ & L \\
+            \hline
+            $M_{b}$ & $X_{T}$ & $X_{T}$ & $M_{b}$ & L \\
+            \hline
+            $M_{b}$ & NULL & NULL & $M_{C}$ & R \\
+            \hline
+            $M_{C}$ & $X_{T}$ & NULL & $M_{fx}$ & R \\
+            \hline
+            $M_{C}$ & $X$ & $X$ & $E$ & R \\
+            \hline
+            $E$ & $X$ & $X$ & $M_{fx}$ & R \\
+            \hline
+            $E$ & + & + & $M_{fx}$ & R \\
+            \hline
+            $E$ & = & = & $M_{fx}$ & R \\
+            \hline
+            $E$ & NULL & b & ABORT & N \\
+
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\newpage
+以下是一些注释：
+
+STA表示起始状态。
+
+F表示寻找未计算数状态。
+
+X表示状态时，为找到未计算数状态，表示数字时，为0或1。
+
+$J_{i}$为进位器（$J_{0}$表示无进位，$J_{1}$表示有进位），下标C表示将该数标记为已计算，
+
+$P_{i}$为位置指示器（$P_{0}$、$P_{1}$、$P_{2}$分别表示第一次经过“+”、第一次经过“=”、第二次经过“+”）
+
+$T$为搬运指示器，指示图灵机将状态对应的数字添加到纸带左端。
+
+$M$状态为移动状态，指示图灵机将在左端储存的计算结果移动到等号右端。
+
+下标f表示向右移动，下标b表示向左移动，下标x表示当前移动的数。
+
+$E$状态为收尾状态，指示图灵机进行调整格式的任务。
+
+NULL表示当前纸带位置上没有数据。
+
+ABORT表示停机。
+
+\section{第二题}
+
+现代计算机与冯·诺依曼计算机在结构上十分相似。冯·诺依曼结构由五部分组成，包括
+输入设备、运算器、存储器、控制器和输出设备。基本符合现代计算机的组成，
+即输入设备对应键鼠等设备；运算器与控制器对应CPU、GPU甚至NPU等设备；
+存储器对应内存、输出设备对应显示器、扬声器等设备。
+由此观之、现代计算机本质上没有跳出冯·诺依曼结构、现代计算机也都可以称为冯·诺依曼计算机。
+
+计算机区分程序与数据有两种方法，通过时间段区分与通过地址来源区分。
+一个指令的执行通常可以分为多个阶段，包括取指阶段、分析阶段和执行阶段。
+由于CPU在取指阶段读取指令（程序），在执行阶段读取操作数（数据），
+所以可以通过当前位于取指阶段还是执行阶段来判断读取的内容是程序还是数据。
+除了通过时间段区分，计算机还可以通过地址来源来区分程序与数据：
+通过程序计数器提供的地址来访问内存获取的数据是指令（程序），
+在执行阶段由指令的地址码部分提供存储单元地址的数据是操作数（数据），
+不同的地址来源便对应不同的信息类型。
+
+
+\end{document}
+

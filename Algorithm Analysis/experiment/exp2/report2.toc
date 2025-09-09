@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}问题描述}{2}{}%
+\contentsline {section}{\numberline {2}问题分析}{2}{}%
+\contentsline {section}{\numberline {3}算法设计}{2}{}%
+\contentsline {subsection}{\numberline {3.1}状态定义}{2}{}%
+\contentsline {subsection}{\numberline {3.2}最优子结构}{2}{}%
+\contentsline {subsection}{\numberline {3.3}重叠子问题}{2}{}%
+\contentsline {subsection}{\numberline {3.4}边界条件}{2}{}%
+\contentsline {section}{\numberline {4}算法实现}{3}{}%
+\contentsline {section}{\numberline {5}复杂度分析}{4}{}%
+\contentsline {section}{\numberline {6}运行结果}{4}{}%
+\contentsline {section}{\numberline {7}反思与改进}{5}{}%
+\contentsline {subsection}{\numberline {7.1}反思}{5}{}%
+\contentsline {subsection}{\numberline {7.2}改进}{5}{}%
