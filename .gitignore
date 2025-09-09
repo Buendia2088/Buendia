@@ -1,1 +1,19 @@
 .DS_Store
+
+# 忽略 dataset 和 data 文件夹
+dataset/
+data/
+
+# 忽略 新生手册 文件夹
+新生手册/
+
+ics/cachelab-sp25/trace-basic
+ics/cachelab-sp25/trace-data-intensive
+ics/cachelab-sp25/trace-hard
+
+幻影坦克/
+
+mlb/coursework/Dataset
+
+*.pt
+
